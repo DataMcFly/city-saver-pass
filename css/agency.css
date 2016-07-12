@@ -165,7 +165,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default {
     border-color: transparent;
-    background-color: #222;
+    background-color: #efefef;
 }
 
 .navbar-default .navbar-brand {
@@ -247,7 +247,7 @@ fieldset[disabled] .btn-xl.active {
 
     .navbar-default.navbar-shrink {
         padding: 10px 0;
-        background-color: #222;
+        background-color: #efefef;
     }
 
     .navbar-default.navbar-shrink .navbar-brand {
@@ -271,7 +271,7 @@ header {
 }
 
 header .intro-text {
-    padding-top: 100px;
+    padding-top: 10px;
     padding-bottom: 50px;
 }
 
@@ -294,7 +294,7 @@ header .intro-text .intro-heading {
 
 @media(min-width:768px) {
     header .intro-text {
-        padding-top: 300px;
+        padding-top: 30px;
         padding-bottom: 200px;
     }
 

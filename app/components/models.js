@@ -48,6 +48,12 @@ angular.module('myApp.models', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 		}
 	};
 })
+.factory('Coupon', function ($flybaseResourceHttp) {
+	return $flybaseResourceHttp('coupons');
+})
+.factory('Vendor', function ($flybaseResourceHttp) {
+	return $flybaseResourceHttp('vendors');
+})
 .factory('Project', function ($flybaseResourceHttp) {
 	return $flybaseResourceHttp('projects');
 })

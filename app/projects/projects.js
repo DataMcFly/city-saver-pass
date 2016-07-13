@@ -1,10 +1,19 @@
 angular.module('TodoCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 /* Controllers */
-.controller('TodoListCtrl', function($scope, $rootScope, $timeout, $location, $route, projects,login,Project) {
+.controller('TodoListCtrl', function($scope, $rootScope, $timeout, $location, $route, projects,login,me,Project) {
 	if( !login.isLoggedIn() ){
 		console.log("bye");
 		$location.path('/login');
 	}
+	$scope.me = me;
+	if( typeof $scope.me.isAdmin === "undefined" ){
+		console.log("not an admin, bye");
+		$location.path('/login');
+	}else if( $scope.me.isAdmin !== 1 ){
+		console.log("not an admin, bye");
+		$location.path('/login');
+	}
+
 	$scope.projects = projects;
 	var projectsCopy = angular.copy( $scope.projects );
 	var Ref = Project.flybase();
@@ -77,7 +86,7 @@ angular.module('TodoCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 })
 .config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 	$routeProvider.when('/projects', {
-		templateUrl: 'projects/list.html?a=1',
+		templateUrl: 'app/projects/list.html?a=1',
 		controller: 'TodoListCtrl',
 		resolve:{
 			projects:function(Project){
@@ -85,10 +94,19 @@ angular.module('TodoCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 			},
 			login:function( Login ){
 				return new Login();
-			}
+			},
+			me:function(User, Login){
+				var login = new Login();
+				if( login.isLoggedIn() ){
+					var token = login._getToken();
+					var u = User.getById(token);
+//					alert( token );
+					return u;
+				}
+			} 			
 		}
 	}).when('/projects/edit/:id', {
-		templateUrl: 'projects/form.html?a=1',
+		templateUrl: 'app/projects/form.html?a=1',
 		controller: 'TodoFormCtrl',
 		resolve:{
 			project:function(Project, $route){
@@ -97,7 +115,7 @@ angular.module('TodoCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 			} 
 		}
 	}).when('/projects/view/:id', {
-		templateUrl: 'projects/view.html?a=1',
+		templateUrl: 'app/projects/view.html?a=1',
 		controller: 'TodoViewCtrl',
 		resolve:{
 			project:function(Project, $route){
@@ -106,7 +124,7 @@ angular.module('TodoCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 			} 
 		}
 	}).when('/projects/new', {
-		templateUrl: 'projects/form.html?a=1',
+		templateUrl: 'app/projects/form.html?a=1',
 		controller:'TodoFormCtrl', 
 		resolve:{
 			project:function(Project){

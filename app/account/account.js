@@ -51,7 +51,7 @@ angular.module('UserCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 		if( assertValidAccountProps() ) {
 			var pass = $scope.pass;
 			pass = pass.toSHA1();
-			login.createAccount($scope.email, pass).then(function(/* user */) {
+			login.createAccount($scope.email, pass, "0").then(function(/* user */) {
 				$location.path('/account');
 			}, function(err) {
 				$scope.err = err;
@@ -111,7 +111,7 @@ angular.module('UserCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 })
 .config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 	$routeProvider.when('/login', {
-		templateUrl: 'account/login.html',
+		templateUrl: 'app/account/login.html',
 		controller: 'LoginCtrl',
 		resolve:{
 			login:function( Login ){
@@ -119,7 +119,7 @@ angular.module('UserCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 			}
 		}
 	}).when('/account', {
-		templateUrl: 'account/account.html',
+		templateUrl: 'app/account/account.html',
 		controller: 'AccountCtrl',
 		resolve:{
 			login:function( Login ){
@@ -135,7 +135,7 @@ angular.module('UserCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 			}
 		}
 	}).when('/account/edit', {
-		templateUrl: 'account/form.html',
+		templateUrl: 'app/account/form.html',
 		controller: 'AccountFormCtrl',
 		resolve:{
 			login:function( Login ){
@@ -151,7 +151,7 @@ angular.module('UserCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 			} 
 		}
 	}).when('/logout', {
-		templateUrl: 'account/account.html',
+		templateUrl: 'app/account/account.html',
 		controller: 'LogoutCtrl',
 		resolve:{
 			login:function( Login ){

@@ -4,7 +4,7 @@ angular.module('MainCtrl', ['ngRoute'])
 	$scope.tagline = 'To the moon and back!';	
 
 	var Ref = Project.flybase();
-
+/*
 	Ref.on('added', function( data ){
 		$timeout(function() {
 			$scope.projects.push( data.value() );
@@ -32,12 +32,13 @@ angular.module('MainCtrl', ['ngRoute'])
 			}
 		});
 	});
+*/
 })
 .controller('SingleCtrl', function($scope, $location, project) {
 	$scope.project = project;
 }).config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 	$routeProvider.when('/', {
-		templateUrl: 'home/home.html',
+		templateUrl: 'app/home/home.html',
 		controller: 'MainController',
 		resolve:{
 			projects:function(Project){
@@ -46,7 +47,7 @@ angular.module('MainCtrl', ['ngRoute'])
 			}
 		}
 	}).when('/project/:id', {
-		templateUrl: 'home/project.html?a=1',
+		templateUrl: 'app/home/project.html?a=1',
 		controller: 'SingleCtrl',
 		resolve:{
 			project:function(Project, $route){

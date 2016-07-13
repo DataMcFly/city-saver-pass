@@ -5,11 +5,13 @@ angular.module('loginMcFly', [])
 	return function() {
 		var loginRef = new Flybase(FLYBASE_CONFIG.API_KEY, FLYBASE_CONFIG.DB_NAME, "_users");
 		$rootScope._loggedIn = "";
+		$rootScope._isAdmin = "";
 		
 		var Resource = function () {
 			this.flybaseRef = loginRef;
 			this._user = {};
 			$rootScope._loggedIn = "";
+			$rootScope._isAdmin = "";
 			var _this = this;
 			if( this.isLoggedIn() ){
 				this.getUser( _this._getToken(), function( user ){
@@ -26,11 +28,18 @@ angular.module('loginMcFly', [])
 			});				
 		};
 
+		Resource.prototype.adminWatch = function(callback, deep) {
+			var _this = this;
+			$rootScope.$watch('_isAdmin', function(newVal, oldVal){
+				callback( newVal );
+			});
+		};
 
-		Resource.prototype.createAccount = function(email,pass){
+
+		Resource.prototype.createAccount = function(email,pass, isAdmin){
 			var _this = this;
 			return $q(function(resolve, reject) {
-				_this.createUser(email, pass, function(error, userData) {
+				_this.createUser(email, pass, isAdmin, function(error, userData) {
 					if (error) {
 						reject( error );
 						$scope.err = error;
@@ -41,7 +50,7 @@ angular.module('loginMcFly', [])
 			});
 		};
 		
-		Resource.prototype.createUser = function( email, password, callback, options ){
+		Resource.prototype.createUser = function( email, password, isAdmin, callback, options ){
 			var _this = this;
 			this.flybaseRef.where({'email':email}).limit(1).once('value', function( data ){
 				var error = null;
@@ -49,7 +58,7 @@ angular.module('loginMcFly', [])
 					error = "user exists";
 					callback( error );
 				}else{
-					var user = { 'email': email, 'password': password };
+					var user = { 'email': email, 'password': password, 'isAdmin': isAdmin };
 					_this.flybaseRef.push( user, function(data){
 						console.log('Insert Documents : ', data);
 						callback( error );
@@ -106,6 +115,7 @@ angular.module('loginMcFly', [])
 			this._user = {};
 			this._setToken("");
 			$rootScope._loggedIn = "";
+			$rootScope._isAdmin = "";
 			$localstorage.remove("dmLtoken");			
 		};
 		
@@ -115,6 +125,7 @@ angular.module('loginMcFly', [])
 				$rootScope._loggedIn = this._getToken();
 				this.getUser( this._getToken() ).then( function( user ) {
 					_this._user = user;
+					$rootScope._isAdmin = (user.isAdmin === 1 ? true : false);
 				}, function(err) {
 					//	error...
 				});

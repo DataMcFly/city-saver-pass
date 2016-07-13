@@ -4,9 +4,31 @@ angular.module('myApp.directives', [])
 		elm.text(version);
 	};
 }])
-/**
-* A directive that shows elements only when user is logged in.
-*/
+.directive('ngShowAdmin', ['Login', '$timeout', function (Login, $timeout) {
+	var isAdmin;
+	var login = new Login();
+	login.adminWatch(function(user) {
+//		console.log( user );
+//		alert( user );
+		isAdmin = !!user;
+	});
+	return {
+		restrict: 'A',
+		link: function(scope, el) {
+			el.addClass('ng-cloak'); // hide until we process it
+			function update() {
+				// sometimes if ngCloak exists on same element, they argue, so make sure that
+				// this one always runs last for reliability
+				$timeout(function () {
+//					alert( isAdmin );
+					el.toggleClass('ng-cloak', !isAdmin);
+				}, 0);
+			}
+			update();
+			login.adminWatch(update, scope);
+		}
+	};
+}])
 .directive('ngShowAuth', ['Login', '$timeout', function (Login, $timeout) {
 	var isLoggedIn;
 	var login = new Login();

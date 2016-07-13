@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>City Saver Pass</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base ng-href="/">
+	
+	<!-- CSS -->
+	<link ng-href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+	<link ng-href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" ng-href="app/css/app.css"> <!-- custom styles -->
+
+	<!-- JS -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script src="app/bower_components/angular-route/angular-route.js"></script>
+	<script src="app/components/forge.min.js"></script>
+</head>
+<body ng-cloak>
+	<div class="container">
+		<div ng-include="'app/templates/nav.html?aaa=1.b'"></div>
+		<div ng-view></div>
+	</div>
+	<footer class="footer">
+		<div class="container">
+			<p class="text-muted">Fit Stack v<span app-version></span></p>
+		</div>
+	</footer>
+	<!-- JS -->
+	<script src="app/bower_components/flybase/flybase.js"></script>
+	<script src="app/bower_components/angularfly/angularfly.js"></script>
+<!--
+	<script src="https://cdn.flybase.io/flybaseauth.min.js"></script>
+-->
+	
+	<!-- ANGULAR STUFF -->
+	<script src="app/config.js"></script>
+<!-- SERVICES -->
+	<script src="app/components/directives.js"></script>
+	<script src="app/components/models.js"></script>
+	<script src="app/components/loginMcFly.js"></script>
+<!-- CONTROLLERS -->
+	<script src="app/home/home.js"></script>
+	<script src="app/account/account.js"></script>
+	<script src="app/projects/projects.js"></script>
+	<script src="app/app.js"></script>
+</body>
+</html>

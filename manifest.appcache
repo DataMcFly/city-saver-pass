@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 5 - 2016-07-15T03:03:02.934Z
+# rev 6 - 2016-07-15T03:04:27.119Z
 
 CACHE:
 //ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
@@ -9,7 +9,7 @@ app/bower_components/angular-add-to-home-screen/dist/angular-add-to-home-screen.
 app/bower_components/angular-route/angular-route.js
 app/components/forge.min.js
 app/bower_components/flybase/flybase.js
-app/bower_components/angularfly/angularfly.js
+app/bower_components/angularfly/angularfly.js?v=1.0.4
 app/config.js
 app/components/directives.js
 app/components/models.js

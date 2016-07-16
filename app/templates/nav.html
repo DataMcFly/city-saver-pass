@@ -13,6 +13,13 @@
 	<div id="navbar" class="collapse navbar-collapse" style="padding-top:10px;">
 		<ul class="nav navbar-nav">
 			<li><a ng-href="#/">Home</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li ng-hide-auth>
+				<div style="margin-top:-10px;margin-right:8px;margin-left:8px;">
+					<a class="btn btn-success" ng-href="#/login">Login</a>
+				</div>
+			</li>
 			<li ng-show-admin class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -21,13 +28,6 @@
 					<li role="separator" class="divider"></li>
 					<li><a href="#">Separated link</a></li>
 				</ul>
-			</li>			
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li ng-hide-auth>
-				<div style="margin-top:-10px;margin-right:8px;margin-left:8px;">
-					<a class="btn btn-success" ng-href="#/login">Login</a>
-				</div>
 			</li>
 			<li ng-show-auth class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>

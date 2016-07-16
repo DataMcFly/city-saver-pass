@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 10 - 2016-07-16T16:10:15.154Z
+# rev 11 - 2016-07-16T16:14:09.982Z
 
 CACHE:
 //ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
@@ -19,6 +19,7 @@ app/account/account.js
 app/projects/projects.js
 app/app.js
 /
+/index.html
 /app/account/account.html
 /app/account/account.js
 /app/account/form.html

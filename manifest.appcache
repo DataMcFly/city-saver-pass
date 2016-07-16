@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 17 - 2016-07-16T16:32:11.884Z
+# rev 18 - 2016-07-16T16:37:26.854Z
 
 CACHE:
 app/assets/img/apple-touch-icon.png
@@ -23,6 +23,7 @@ app/home/home.js
 app/account/account.js
 app/projects/projects.js
 app/app.js
+app/components/FastActive.min.js
 /
 /index.html
 /app/account/account.html
@@ -45,6 +46,7 @@ app/app.js
 /app/assets/img/splash.png
 /app/assets/img/vineyard.jpg
 /app/components/directives.js
+/app/components/FastActive.min.js
 /app/components/forge.min.js
 /app/components/loginMcFly.js
 /app/components/models.js

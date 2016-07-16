@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="myApp" manifest="manifest.appcache">
+<html lang="en" ng-app="myApp" manifest="cache.manifest">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,6 +74,11 @@
 			}
 		})(document, window);
 	</script>
-
+	<script>
+		function updateSite(event) {
+			window.location.reload(true);
+		}
+		window.applicationCache.addEventListener('updateready', updateSite, false);
+	</script>
 </body>
 </html>

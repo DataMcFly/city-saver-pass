@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('myApp.config', [])
-.constant('version', '1.0.1')
+.constant('version', '1.0.2')
 .constant('loginRedirectPath', '/login')
 .constant('SERVER_CONFIG', {	//	for talking to local API
 	url: '/api'

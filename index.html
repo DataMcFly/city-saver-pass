@@ -40,7 +40,7 @@
 	<div class="container">
 		<div ng-include="'app/templates/nav.html?v=2.a'"></div>
 		<div ng-view></div>
-		<div class="panel panel-default visible-sm-* visible-xs-* hidden-md hidden-lg">
+		<div id="mobileinstall" class="panel panel-default visible-sm-* visible-xs-* hidden-md hidden-lg">
 			<div class="panel-heading" role="tab" id="headingTwo">
 				<h4 class="panel-title">
 					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Download the City Saver Pass mobile app for free.</a>
@@ -108,6 +108,11 @@
 			window.location.reload(true);
 		}
 		window.applicationCache.addEventListener('updateready', updateSite, false);
+		if ( ("standalone" in window.navigator) && !window.navigator.standalone ){
+			//	nothing...
+		}else{
+			$("#mobileinstall").hide();
+		}
 /*
 		var appCache = window.applicationCache;
 		appCache.update(); // Attempt to update the user's cache.

@@ -15,7 +15,7 @@
 	<link ng-href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 	<link ng-href="app/bower_components/angular-add-to-home-screen/styles/aaths.css" rel="stylesheet">
 	<!-- custom styles -->
-	<link rel="stylesheet" ng-href="app/assets/css/app.css">
+	<link rel="stylesheet" ng-href="app/assets/css/app.css?v=2">
 
 	<!-- JS -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -40,12 +40,41 @@
 	<div class="container">
 		<div ng-include="'app/templates/nav.html?v=2.a'"></div>
 		<div ng-view></div>
+		<div class="panel panel-default visible-sm-* visible-xs-* hidden-md hidden-lg">
+			<div class="panel-heading" role="tab" id="headingTwo">
+				<h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Download the City Saver Pass mobile app for free.</a>
+				</h4>
+			</div>
+			<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+				<div class="panel-body">
+					<p>
+					Simply tap the <img class="share" src="app/assets/img/iphone_share.png" /> button below, and choose "Add to Home Screen".
+					</p>
+					
+					<p>
+					The mobile app will then be installed as an icon on your home screen.
+					</p>
+					
+					<p class="arrow">↓</p>
+				</div>
+			</div>
+		</div>
 	</div>
+	<div id="credit">
+		<p class="text-muted">v<span app-version></span></p>
+	</div>
+<!--
+	<footer class="footer">
+	</footer>
+-->
+<!--
 	<footer class="footer">
 		<div class="container">
 			<p class="text-muted">v<span app-version></span></p>
 		</div>
 	</footer>
+-->
 	<!-- JS -->
 	<script src="app/bower_components/flybase/flybase.js"></script>
 	<script src="app/bower_components/angularfly/angularfly.js?v=1.0.4"></script>

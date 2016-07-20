@@ -1,5 +1,78 @@
-	<img src="app/assets/img/logo.png" class="img-responsive" />
+<div class="row">
+	<div class="col-sm-12 col-md-10 col-md-offset-1">
+		<div class="Absolute-Center is-Responsive">
+			<img src="app/assets/img/logo.png" class="img-responsive" style="text-align: center;margin: auto;" />
+			<br />
+		</div>
+	</div>
+</div>
+<br />
+<div class="row" ng-hide-auth>
+	<div class="col-sm-12 col-md-10 col-md-offset-1">
+		<div class="Absolute-Center is-Responsive">
+			<button type="button" class="btn btn-default btn-circle btn-xl">
+				<i title="About" class="fa fa-question" aria-hidden="true"></i>
+			</button>
+			<button type="button" class="btn btn-default btn-circle btn-xl">
+				<i title="Buy" class="fa fa-shopping-cart" aria-hidden="true"></i>
+			</button>
+			<button type="button" class="btn btn-default btn-circle btn-xl">
+				<i title="Buy" class="fa fa-usd" aria-hidden="true"></i>
+			</button>
+			<button type="button" class="btn btn-default btn-circle btn-xl">
+				<i title="Buy" class="fa fa-mobile" aria-hidden="true"></i>
+			</button>
+			<button type="button" class="btn btn-default btn-circle btn-xl">
+				<i title="Buy" class="fa fa-reply" aria-hidden="true"></i>
+			</button>
+		</div>
+	</div>
+</div>
+<br />
+<div class="row" ng-hide-auth>
+	<div class="col-sm-12 col-md-10 col-md-offset-1">
+		<div class="Absolute-Center is-Responsive">
+			<button type="button" class="btn btn-default btn-circle btn-xl">
+				<i title="About" class="fa fa-facebook" aria-hidden="true"></i>
+			</button>
+			<button type="button" class="btn btn-default btn-circle btn-xl">
+				<i title="Buy" class="fa fa-twitter" aria-hidden="true"></i>
+			</button>
+			<button type="button" class="btn btn-default btn-circle btn-xl">
+				<i title="Buy" class="fa fa-instagram" aria-hidden="true"></i>
+			</button>
+		</div>
+	</div>
+</div>
+<div class="row" ng-show-auth>
+	<div class="col-sm-12 col-md-10 col-md-offset-1">
+		<div class="Absolute-Center is-Responsive">
+			<button type="button" class="btn btn-default btn-circle btn-xl">
+				<i title="About" class="fa fa-search" aria-hidden="true"></i>
+			</button>
+			<button type="button" class="btn btn-default btn-circle btn-xl">
+				<i title="About" class="fa fa-map-marker" aria-hidden="true"></i>
+			</button>
+			<button type="button" class="btn btn-default btn-circle btn-xl">
+				<i title="About" class="fa fa-ticket" aria-hidden="true"></i>
+			</button>
+			<button type="button" class="btn btn-default btn-circle btn-xl"  ng-click="goToPage('/logout')">
+				<i title="About" class="fa fa-unlock" aria-hidden="true"></i>
+			</button>
+<!-- admin only pages -->
+		</div>
+	</div>
+</div>
+<div class="row" ng-show-auth>
 	<br />
+	<div class="col-sm-12 col-md-10 col-md-offset-1">
+		<div class="Absolute-Center is-Responsive">
+			<button ng-show-admin type="button" class="btn btn-default btn-circle btn-lg"  ng-click="goToPage('/projects')">
+				<i title="About" class="fa fa-cogs" aria-hidden="true"></i>
+			</button>
+		</div>
+	</div>
+</div>
 <!--
 	<div class="list-group"  ng-repeat="project in projects">
 		<div class="list-group-item">

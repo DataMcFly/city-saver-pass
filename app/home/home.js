@@ -1,9 +1,13 @@
 angular.module('MainCtrl', ['ngRoute'])
-.controller('MainController', function($scope,$timeout,projects,Project) {
+.controller('MainController', function($scope,$timeout,$location, projects,Project) {
 	$scope.projects = projects;
 	$scope.tagline = 'To the moon and back!';	
 
 	var Ref = Project.flybase();
+	
+	$scope.goToPage = function( page ){
+		$location.path(page);
+	}
 /*
 	Ref.on('added', function( data ){
 		$timeout(function() {
@@ -38,7 +42,7 @@ angular.module('MainCtrl', ['ngRoute'])
 	$scope.project = project;
 }).config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 	$routeProvider.when('/', {
-		templateUrl: 'app/home/home.html',
+		templateUrl: 'app/home/home.html?v=1.a',
 		controller: 'MainController',
 		resolve:{
 			projects:function(Project){

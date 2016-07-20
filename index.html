@@ -11,22 +11,16 @@
 	<base ng-href="/">
 	
 	<!-- CSS -->
-	<link ng-href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-	<link ng-href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-	<link ng-href="app/bower_components/angular-add-to-home-screen/styles/aaths.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 	<!-- custom styles -->
 	<link rel="stylesheet" ng-href="app/assets/css/app.css?v=2">
 
 	<!-- JS -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-	<script src="app/bower_components/angular-add-to-home-screen/dist/angular-add-to-home-screen.js"></script>
-<!--
-	<script src="app/bower_components/angular-add-to-home-screen/js/angularAddToHomeScreen.js"></script>
-	<script src="app/bower_components/angular-add-to-home-screen/js/directives/ngAddToHomeScreen.js"></script>
-	<script src="app/bower_components/angular-add-to-home-screen/js/services/homeScreenDetector.js"></script>
--->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
 	<script src="app/bower_components/angular-route/angular-route.js"></script>
 	<script src="app/components/forge.min.js"></script>
 	<link rel="apple-touch-icon" sizes="180x180" href="app/assets/img/apple-touch-icon.png">
@@ -38,7 +32,7 @@
 </head>
 <body ng-cloak>
 	<div class="container">
-		<div ng-include="'app/templates/nav.html?v=2.a'"></div>
+		<div ng-include="'app/templates/nav.html?v=2.bd'"></div>
 		<div ng-view></div>
 		<div id="mobileinstall" class="panel panel-default visible-sm-* visible-xs-* hidden-md hidden-lg">
 			<div class="panel-heading" role="tab" id="headingTwo">
@@ -89,7 +83,7 @@
 	<script src="app/components/models.js"></script>
 	<script src="app/components/loginMcFly.js"></script>
 <!-- CONTROLLERS -->
-	<script src="app/home/home.js"></script>
+	<script src="app/home/home.js?v=1.b"></script>
 	<script src="app/account/account.js"></script>
 	<script src="app/projects/projects.js"></script>
 	<script src="app/app.js"></script>
@@ -104,16 +98,15 @@
 		})(document, window);
 	</script>
 	<script>
-		function updateSite(event) {
-			window.location.reload(true);
-		}
-		window.applicationCache.addEventListener('updateready', updateSite, false);
 		if ( ("standalone" in window.navigator) && !window.navigator.standalone ){
 			//	nothing...
 		}else{
 			$("#mobileinstall").hide();
 		}
-/*
+		function updateSite(event) {
+			window.location.reload(true);
+		}
+//		window.applicationCache.addEventListener('updateready', updateSite, false);
 		var appCache = window.applicationCache;
 		appCache.update(); // Attempt to update the user's cache.
 		if (appCache.status == window.applicationCache.UPDATEREADY) {
@@ -124,7 +117,7 @@
 			window.applicationCache.addEventListener('updateready', function(e) {
 				if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
 					// Browser downloaded a new app cache.
-					if (confirm('A new version of this site is available. Load it?')) {
+					if (confirm('A new version of this app is available. Update it?')) {
 						window.location.reload(true);
 					}
 				} else {
@@ -132,7 +125,6 @@
 				}
 			}, false);
 		}, false);
-*/
 	</script>
 </body>
 </html>

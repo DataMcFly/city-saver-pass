@@ -13,7 +13,6 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
-	'angularAddToHomeScreen',
 	'myApp.config',
 	'myApp.models',
 	"UserCtrl",

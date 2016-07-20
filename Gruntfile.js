@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 	        cache: {
 	            patterns: [
 	                // add all css, js and assets of my application
-//	                'index.html',
+	                'index.html',
 	                'app/**/*',
 	                // but not files from third party components
 	                '!app/bower_components/**',

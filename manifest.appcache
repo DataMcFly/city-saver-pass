@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 48 - 2016-07-20T15:45:40.927Z
+# rev 49 - 2016-07-22T18:39:25.833Z
 
 CACHE:
 https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css
@@ -21,8 +21,10 @@ app/components/directives.js
 app/components/models.js
 app/components/loginMcFly.js
 app/home/home.js?v=1.b
-app/account/account.js
-app/projects/projects.js
+app/account/account.js?v=1.b
+app/vendors/vendors.js
+app/coupons/coupons.js
+app/control/control.js
 app/app.js
 app/components/FastActive.min.js
 /
@@ -53,6 +55,14 @@ app/components/FastActive.min.js
 /app/components/loginMcFly.js
 /app/components/models.js
 /app/config.js
+/app/control/control.js
+/app/control/form.html
+/app/control/list.html
+/app/control/view.html
+/app/coupons/coupons.js
+/app/coupons/form.html
+/app/coupons/list.html
+/app/coupons/view.html
 /app/home/home.html
 /app/home/home.js
 /app/home/project.html
@@ -61,6 +71,10 @@ app/components/FastActive.min.js
 /app/projects/projects.js
 /app/projects/view.html
 /app/templates/nav.html
+/app/vendors/form.html
+/app/vendors/list.html
+/app/vendors/vendors.js
+/app/vendors/view.html
 
 NETWORK:
 *

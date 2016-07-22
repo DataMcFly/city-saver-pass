@@ -40,7 +40,7 @@ angular.module('UserCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 		$scope.err = null;
 		pass = pass.toSHA1();
 		login.login(email, pass).then(function(/* user */) {
-			$location.path('/account');
+			$location.path('/');
 		}, function(err) {
 			$scope.err = err;
 		});
@@ -52,7 +52,7 @@ angular.module('UserCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 			var pass = $scope.pass;
 			pass = pass.toSHA1();
 			login.createAccount($scope.email, pass, "0").then(function(/* user */) {
-				$location.path('/account');
+				$location.path('/');
 			}, function(err) {
 				$scope.err = err;
 			});
@@ -119,7 +119,7 @@ angular.module('UserCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 			}
 		}
 	}).when('/account', {
-		templateUrl: 'app/account/account.html',
+		templateUrl: 'app/account/account.html?v=2',
 		controller: 'AccountCtrl',
 		resolve:{
 			login:function( Login ){

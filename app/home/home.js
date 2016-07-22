@@ -1,26 +1,28 @@
 angular.module('MainCtrl', ['ngRoute'])
-.controller('MainController', function($scope,$timeout,$location, projects,Project) {
-	$scope.projects = projects;
+.controller('MainController', function($scope,$timeout,$location, coupons,Coupon, vendors, Vendor) {
+	$scope.coupons = coupons;
+	$scope.vendors = vendors;
+
 	$scope.tagline = 'To the moon and back!';	
 
-	var Ref = Project.flybase();
-	
 	$scope.goToPage = function( page ){
 		$location.path(page);
 	}
 /*
+	var Ref = Coupon.flybase();
+	
 	Ref.on('added', function( data ){
 		$timeout(function() {
-			$scope.projects.push( data.value() );
+			$scope.coupons.push( data.value() );
 		});
 	});
 	Ref.on('changed', function( data ){
 		$timeout(function() {
 			var snapshot = data.value();
-			for( i in $scope.projects ){
-				var project = $scope.projects[ i ];
-				if( project._id == snapshot._id ){
-					$scope.projects[ i ] = snapshot;
+			for( i in $scope.coupons ){
+				var coupon = $scope.coupons[ i ];
+				if( coupon._id == snapshot._id ){
+					$scope.coupons[ i ] = snapshot;
 				}
 			}
 		});
@@ -28,34 +30,44 @@ angular.module('MainCtrl', ['ngRoute'])
 	Ref.on('removed', function( data ){
 		$timeout(function() {
 			var snapshot = data.value();
-			for( i in $scope.projects ){
-				var project = $scope.projects[ i ];
-				if( project._id == snapshot._id ){
-					$scope.projects.splice(i, 1);
+			for( i in $scope.coupons ){
+				var coupon = $scope.coupons[ i ];
+				if( coupon._id == snapshot._id ){
+					$scope.coupons.splice(i, 1);
 				}
 			}
 		});
 	});
 */
-})
-.controller('SingleCtrl', function($scope, $location, project) {
-	$scope.project = project;
+}).controller('CouponCtrl', function($scope, $location, coupon) {
+	$scope.coupon = coupon;
+}).controller('VendorCtrl', function($scope, $location, vendor) {
+	$scope.vendor = vendor;
 }).config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'app/home/home.html?v=1.a',
 		controller: 'MainController',
 		resolve:{
-			projects:function(Project){
-//				return Project.query({"tag":{"$not":"1"}},{"limit":10});
-				return Project.all();
+			coupons:function(Coupon){
+//				return Coupon.query({"tag":{"$not":"1"}},{"limit":10});
+				return Coupon.all();
 			}
 		}
-	}).when('/project/:id', {
-		templateUrl: 'app/home/project.html?a=1',
-		controller: 'SingleCtrl',
+	}).when('/coupon/:id', {
+		templateUrl: 'app/home/coupon.html?a=1',
+		controller: 'CouponCtrl',
 		resolve:{
-			project:function(Project, $route){
-				var p = Project.getById($route.current.params.id);
+			coupon:function(Coupon, $route){
+				var p = Coupon.getById($route.current.params.id);
+				return p;
+			} 
+		}
+	}).when('/vendor/:id', {
+		templateUrl: 'app/home/vendor.html?a=1',
+		controller: 'VendorCtrl',
+		resolve:{
+			vendor:function(Vendor, $route){
+				var p = Vendor.getById($route.current.params.id);
 				return p;
 			} 
 		}

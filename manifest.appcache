@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 49 - 2016-07-22T18:39:25.833Z
+# rev 50 - 2016-07-22T18:46:34.683Z
 
 CACHE:
 https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css
@@ -63,9 +63,10 @@ app/components/FastActive.min.js
 /app/coupons/form.html
 /app/coupons/list.html
 /app/coupons/view.html
+/app/home/coupon.html
 /app/home/home.html
 /app/home/home.js
-/app/home/project.html
+/app/home/vendor.html
 /app/projects/form.html
 /app/projects/list.html
 /app/projects/projects.js

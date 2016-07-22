@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 51 - 2016-07-22T18:57:20.671Z
+# rev 54 - 2016-07-22T19:07:31.856Z
 
 CACHE:
 https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css
@@ -16,11 +16,11 @@ app/bower_components/angular-route/angular-route.js
 app/components/forge.min.js
 app/bower_components/flybase/flybase.js
 app/bower_components/angularfly/angularfly.js?v=1.0.4
-app/config.js
+app/config.js?v=1.4
 app/components/directives.js
 app/components/models.js
 app/components/loginMcFly.js
-app/home/home.js?v=1.ca
+app/home/home.js?v=1.da
 app/account/account.js?v=1.b
 app/vendors/vendors.js
 app/coupons/coupons.js

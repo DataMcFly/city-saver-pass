@@ -17,7 +17,7 @@ angular.module('ControlCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 })
 .config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 	$routeProvider.when('/control', {
-		templateUrl: 'app/control/list.html?a=1',
+		templateUrl: 'app/control/list.html?v=1.a',
 		controller: 'ControlListCtrl',
 		resolve:{
 			login:function( Login ){

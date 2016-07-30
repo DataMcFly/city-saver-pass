@@ -106,7 +106,7 @@ angular.module('VendorCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 			} 			
 		}
 	}).when('/vendors/edit/:id', {
-		templateUrl: 'app/vendors/form.html?a=1',
+		templateUrl: 'app/vendors/form.html?a=2.a',
 		controller: 'VendorFormCtrl',
 		resolve:{
 			vendor:function(Vendor, $route){
@@ -124,7 +124,7 @@ angular.module('VendorCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 			} 
 		}
 	}).when('/vendors/new', {
-		templateUrl: 'app/vendors/form.html?a=1',
+		templateUrl: 'app/vendors/form.html?a=2.a',
 		controller:'VendorFormCtrl', 
 		resolve:{
 			vendor:function(Vendor){

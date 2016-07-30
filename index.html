@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="full" ng-app="myApp" manifest="manifest.appcache">
+<html lang="en" class="full" ng-app="myApp"><!-- manifest="manifest.appcache">-->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 	<!-- custom styles -->
-	<link rel="stylesheet" ng-href="app/assets/css/app.css?v=2">
+	<link rel="stylesheet" ng-href="app/assets/css/app.css?v=2.b">
 
 	<!-- JS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -33,6 +33,7 @@
 <body ng-cloak>
 	<div class="container">
 		<div ng-view></div>
+		<br /><br />
 		<div id="mobileinstall" class="panel panel-default visible-sm-* visible-xs-* hidden-md hidden-lg">
 			<div class="panel-heading" role="tab" id="headingTwo">
 				<h4 class="panel-title">
@@ -86,7 +87,7 @@
 	<script src="app/account/account.js?v=1.b"></script>
 	<script src="app/vendors/vendors.js"></script>
 	<script src="app/coupons/coupons.js"></script>
-	<script src="app/control/control.js"></script>	
+	<script src="app/control/control.js?v=1.a"></script>	
 	<script src="app/app.js"></script>
 	<script src="app/components/FastActive.min.js"></script>
 	<script>

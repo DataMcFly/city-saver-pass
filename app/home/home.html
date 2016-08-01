@@ -10,28 +10,45 @@
 <div class="row" ng-hide-auth>
 	<div class="col-sm-12 col-md-10 col-md-offset-1">
 		<div class="Absolute-Center is-Responsive">
-			<div class="list-group well" style="text-align:left">
-				<a class="list-group-item active" ng-click="goToPage('/login')">
-					<i title="About" class="fa fa-lock" aria-hidden="true"></i> Login
-				</a>
-				<a class="list-group-item active">
-					<i title="Buy" class="fa fa-shopping-cart" aria-hidden="true"></i> Register
-				</a>
-				<a class="list-group-item active">
-					<i title="About" class="fa fa-question" aria-hidden="true"></i> About
-				</a>
+			<ul class="list-group" style="text-align:left">
+				<li class="list-group-item" style="background: transparent;border:0px;">
+					<button type="button" class="btn btn-lg btn-default btn-block" ng-click="goToPage('/login')">
+						<i title="About" class="fa fa-lock" aria-hidden="true"></i> Login
+					</button>
+				</li>
+				<li class="list-group-item" style="background: transparent;border:0px;">
+					<button type="button" class="btn btn-lg btn-block btn-success">
+						<i title="Buy" class="fa fa-shopping-cart" aria-hidden="true"></i> Join as a member
+					</button>
+				</li>
+				<li class="list-group-item" style="background: transparent;border:0px;">
+					<button type="button" class="btn btn-lg btn-block btn-success">
+						<i title="Buy" class="fa fa-shopping-cart" aria-hidden="true"></i> Join as a business
+					</button>
+				</li>
+				<li class="list-group-item" style="background: transparent;border:0px;">
+					<button type="button" class="btn btn-lg btn-block btn-default">
+						<i title="About" class="fa fa-question" aria-hidden="true"></i> About
+					</button>
+				</li>
 <!--
-				<a class="list-group-item active">
-					<i title="Buy" class="fa fa-usd" aria-hidden="true"></i>
-				</a>
-				<a class="list-group-item active">
-					<i title="Buy" class="fa fa-mobile" aria-hidden="true"></i>
-				</a>
-				<a class="list-group-item active">
-					<i title="Buy" class="fa fa-reply" aria-hidden="true"></i>
-				</a>
+				<li class="list-group-item" style="background: transparent;border:0px;">
+					<button type="button" class="btn btn-lg btn-block btn-success">
+						<i title="Buy" class="fa fa-usd" aria-hidden="true"></i>
+					</button>
+				</li>
+				<li class="list-group-item" style="background: transparent;border:0px;">
+					<button type="button" class="btn btn-lg btn-block btn-success">
+						<i title="Buy" class="fa fa-mobile" aria-hidden="true"></i>
+					</button>
+				</li>
+				<li class="list-group-item" style="background: transparent;border:0px;">
+					<button type="button" class="btn btn-lg btn-block btn-success">
+						<i title="Buy" class="fa fa-reply" aria-hidden="true"></i>
+					</button>
+				</li>
 -->
-			</div>
+			</ul>
 		</div>
 	</div>
 </div>
@@ -54,22 +71,34 @@
 <div class="row" ng-show-auth>
 	<div class="col-sm-12 col-md-10 col-md-offset-1">
 		<div class="Absolute-Center is-Responsive">
-			<div class="list-group well" style="text-align:left">
-				<a ng-show="!me.isAdmin" class="list-group-item active">
-					<i title="About" class="fa fa-search" aria-hidden="true"></i> Find Deals
-				</a>
-				<a ng-show="!me.isAdmin" class="list-group-item active">
-					<i title="About" class="fa fa-map-marker" aria-hidden="true"></i> Deals Near Me
-				</a>
-				<a ng-show="!me.isAdmin" class="list-group-item active">
-					<i title="About" class="fa fa-ticket" aria-hidden="true"></i> Local Vendors
-				</a>
-				<a ng-href="#/vendors" class="list-group-item active">Manage Vendors</a>		
-				<a ng-href="#/coupons" class="list-group-item active">Manage Coupons</a>
-				<a class="list-group-item active" ng-click="goToPage('/logout')">
-					<i title="About" class="fa fa-unlock" aria-hidden="true"></i> Logout
-				</a>
-			</div>
+			<ul class="list-group" style="text-align:left">
+				<li class="list-group-item" style="background: transparent;border:0px;">
+					<button ng-show="!me.isAdmin" type="button" class="btn btn-lg btn-default btn-block">
+						<i title="About" class="fa fa-search" aria-hidden="true"></i> Find Deals
+					</button>
+				</li>
+				<li class="list-group-item" style="background: transparent;border:0px;">
+					<button ng-show="!me.isAdmin" type="button" class="btn btn-lg btn-default btn-block">
+						<i title="About" class="fa fa-map-marker" aria-hidden="true"></i> Deals Near Me
+					</button>
+				</li>
+				<li class="list-group-item" style="background: transparent;border:0px;">
+					<button ng-show="!me.isAdmin" type="button" class="btn btn-lg btn-default btn-block">
+						<i title="About" class="fa fa-ticket" aria-hidden="true"></i> Local Vendors
+					</button>
+				</li>
+				<li ng-show="me.isAdmin" class="list-group-item" style="background: transparent;border:0px;">
+					<button ng-click="goToPage('/vendors')" type="button" class="btn btn-lg btn-default btn-block">Manage Vendors</button>
+				</li>
+				<li ng-show="me.isAdmin" class="list-group-item" style="background: transparent;border:0px;">
+					<button ng-click="goToPage('/coupons')" type="button" class="btn btn-lg btn-default btn-block">Manage Coupons</button>
+				</li>
+				<li class="list-group-item" style="background: transparent;border:0px;">
+					<buttontype="button" class="btn btn-lg btn-default btn-block" ng-click="goToPage('/logout')">
+						<i title="About" class="fa fa-unlock" aria-hidden="true"></i> Logout
+					</button>
+				</li>
+			</ul>
 <!-- admin only pages -->
 		</div>
 	</div>

@@ -1,60 +1,38 @@
-<div class="whitebox box-shadow--6dp">
-	<div class="pull-right">
-		<a ng-href="#/" class="btn btn-primary"><i class="fa fa-home" aria-hidden="true"></i></a>
-	</div>
-	<h2 ng-show ng-hide="createMode">Login</h2>
-	<h2 ng-cloak ng-show="createMode">Register</h2>
-	<form>
-		<label>
-			<span>email</span>
-			<input type="text" ng-model="email" />
-		</label>
-		<label>
-			<span>password</span>
-			<input type="password" ng-model="pass" />
-		</label>
-		<label ng-cloak ng-show="createMode">
-			<span>confirm pass</span>
-			<input type="password" ng-model="confirm" />
-		</label>
-		<button ng-click="login(email, pass)" ng-hide="createMode">Log In</button>
-	<!--
-		<button ng-click="createMode = true" ng-hide="createMode">Register</button>
-		<button ng-cloak ng-show="createMode" ng-click="createAccount()">Create Account</button>
-	-->
-		<button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
-		<p ng-show="err" class="error">{{err}}</p>
-	</form>
-</div>
-
-<!--
-	<div class="container">
-		<div class="row">
-			<div class="Absolute-Center is-Responsive">
-				<div class="col-sm-12 col-md-10 col-md-offset-1">
-					<form action="" id="loginForm">
-					<div class="form-group input-group">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-						<input class="form-control" type="text" name='username' placeholder="username"/>          
+<div class="container">
+	<div class="row">
+		<div class="Absolute-Center is-Responsive">
+			<div class="col-sm-12 col-md-10 col-md-offset-1">
+				<div class="whitebox box-shadow--6dp">
+					<div class="pull-right">
+						<a ng-href="#/" class="btn btn-primary"><i class="fa fa-home" aria-hidden="true"></i></a>
 					</div>
-					<div class="form-group input-group">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-						<input class="form-control" type="password" name='password' placeholder="password"/>     
-					</div>
-					<div class="checkbox">
-						<label>
-						<input type="checkbox"> I agree to the <a href="#">Terms and Conditions</a>
-						</label>
-					</div>
-					<div class="form-group">
-						<button type="button" class="btn btn-def btn-block">Login</button>
-					</div>
-					<div class="form-group text-center">
-						<a href="#">Forgot Password</a>&nbsp;|&nbsp;<a href="#">Support</a>
-					</div>
-					</form>        
-				</div>  
-			</div>    
+					<h2 ng-show ng-hide="createMode">Login</h2>
+					<h2 ng-cloak ng-show="createMode">Register</h2>
+					<form>
+						<div class="form-group input-group">
+							<span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+							<input class="form-control" type="email" name='email' placeholder="email" ng-model="email" />
+						</div>
+						<div class="form-group input-group">
+							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+							<input class="form-control" type="password" name='password' placeholder="password" ng-model="pass"/>     
+						</div>
+						<div class="form-group input-group" ng-cloak ng-show="createMode">
+							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+							<input class="form-control" type="password" name='password' placeholder="confirm password" ng-model="confirm"/>     
+						</div>
+						<div class="form-group">
+							<button type="button" class="btn btn-success btn-block" ng-click="login(email, pass)" ng-hide="createMode">Login</button>
+						</div>
+					<!--
+						<button ng-click="createMode = true" ng-hide="createMode">Register</button>
+						<button ng-cloak ng-show="createMode" ng-click="createAccount()">Create Account</button>
+					-->
+						<button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
+						<p ng-show="err" class="error">{{err}}</p>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
--->
+</div>

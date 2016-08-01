@@ -21,12 +21,12 @@ angular.module('UserCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 
 	$scope.logout = function() {
 		login.logout();
-		$location.path('/login');
+		$location.path('/');
 	};
 })
 .controller('LogoutCtrl', function($scope, $q, $location, login) {
 		login.logout();
-		$location.path('/login');
+		$location.path('/');
 //		$window.location.href = 'index.html';
 })
 .controller('LoginCtrl', function($scope, $q, $location, login) {
@@ -111,7 +111,7 @@ angular.module('UserCtrl', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 })
 .config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 	$routeProvider.when('/login', {
-		templateUrl: 'app/account/login.html',
+		templateUrl: 'app/account/login.html?v=1',
 		controller: 'LoginCtrl',
 		resolve:{
 			login:function( Login ){

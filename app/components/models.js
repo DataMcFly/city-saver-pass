@@ -57,9 +57,24 @@ angular.module('myApp.models', ['ngRoute', 'flybaseResourceHttp', 'loginMcFly'])
 .factory('Project', function ($flybaseResourceHttp) {
 	return $flybaseResourceHttp('projects');
 })
+.factory("Activity", function ($flybaseResourceHttp){
+	return $flybaseResourceHttp('activity');
+})
+.factory('Favourite', function ($flybaseResourceHttp){
+	return $flybaseResourceHttp('favourites');	
+})
 .factory('User', function ($flybaseResourceHttp) {
 	return $flybaseResourceHttp('_users');
 })
 .factory('Login', function ( $loginMcFly ) {
 	return $loginMcFly();
 });
+
+/*
+	activity tracks views, redemptions, etc:
+	-	user
+	-	coupon
+	-	activity
+	-	date
+
+*/

@@ -1,7 +1,7 @@
 angular.module('MainCtrl', ['ngRoute'])
 .controller('MainController', function($scope,$timeout,$location, Login, me) {
 	$scope.tagline = 'To the moon and back!';	
-
+	$scope.me = me;
 	$scope.goToPage = function( page ){
 		$location.path(page);
 	}
@@ -11,7 +11,7 @@ angular.module('MainCtrl', ['ngRoute'])
 	$scope.vendor = vendor;
 }).config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 	$routeProvider.when('/', {
-		templateUrl: 'app/home/home.html?v=1.b',
+		templateUrl: 'app/home/home.html?v=2.ed',
 		controller: 'MainController',
 		resolve:{
 			login:function( Login ){

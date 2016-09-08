@@ -1,0 +1,38 @@
+<html>
+<head>
+	<script src="https://cdn.flybase.io/flybase.js"></script>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+</head>
+<body>
+	<ul id='messages'></ul>
+	<input type='text' id='name' placeholder='Name'>
+	<input type='text' id='message' placeholder='Message'>
+	<script>
+//		var Ref = new Flybase("5f053449-082a-48e5-8b1c-5e9660ec1ea8", "test", "chat");
+		var Ref = new Flybase("db9af02e-a81f-4962-8a24-a468f86b4358", "test", "chat");
+		Ref.on('value', function (data) {
+				data.forEach( function( message ){
+					var message = message.value();
+					addChat(message.name, message.text);
+				});
+			});
+			$('#message').keypress(function (e) {
+				if (e.keyCode == 13) {
+					var name = $('#name').val();
+					var text = $('#message').val();
+					Ref.set( {name:name, text:text} );
+					$('#message').val('');
+				}
+			});
+			Ref.on('added', function(data) {
+				var message = data.value();
+				addChat(message.name, message.text);
+			});
+		function addChat(name, text) {
+			$('<li/>').text(text).prepend($('<strong/>').text(name+': ')).appendTo($('#messagesDiv'));
+			$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+		}
+	</script>
+</body>
+</html>
+		

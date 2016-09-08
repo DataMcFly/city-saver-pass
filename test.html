@@ -1,38 +1,158 @@
+
+<!DOCTYPE html>
 <html>
-<head>
-	<script src="https://cdn.flybase.io/flybase.js"></script>
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-</head>
-<body>
-	<ul id='messages'></ul>
-	<input type='text' id='name' placeholder='Name'>
-	<input type='text' id='message' placeholder='Message'>
-	<script>
-//		var Ref = new Flybase("5f053449-082a-48e5-8b1c-5e9660ec1ea8", "test", "chat");
-		var Ref = new Flybase("db9af02e-a81f-4962-8a24-a468f86b4358", "test", "chat");
-		Ref.on('value', function (data) {
-				data.forEach( function( message ){
-					var message = message.value();
-					addChat(message.name, message.text);
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="https://cdn.flybase.io/flybase.js?20160313"></script>
+		<link rel="stylesheet" type="text/css" href="http://api.flybase.io/real/chat.css">
+	</head>
+	<body>
+		<div class='example-chat l-demo-container'>
+			<header>
+				Chat Demo
+				<span id="usersonline">
+					( <span id="ocnt">1</span> Users online )
+				</span>
+			</header>
+			<div class='example-chat-toolbar'>
+				<label for='nameInput'>Username:</label>
+				<input type="text" id="nameInput" placeholder="enter a username..." required required=true />
+			</div>
+			<ul id='messagesDiv' class='example-chat-messages'></ul>
+			<footer>
+				<input type="text" id="messageInput" placeholder="Type a message..." required required=true />
+			</footer>
+		</div>
+		<script type='text/javascript'>
+		$(function(){
+			// Get a reference to the root of the chat data.
+//			var userRef = new Flybase("74c8064f-cd6f-4c07-8baf-b1d241496eec", "users", "users");
+			var token = 'token:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcGlrZXkiOiI3NGM4MDY0Zi1jZDZmLTRjMDctOGJhZi1iMWQyNDE0OTZlZWMifQ.LAIDFSLswAZ5nLT24d-BUk-z9286ygwtKOToxnxWRZo';
+			var apiKey = "00885908-7294-4ad7-8423-eaf6ea518ce4";
+//			var messagesRef = new Flybase(token, "sample", "chattt");
+			var messagesRef = new Flybase('db9af02e-a81f-4962-8a24-a468f86b4358','test','chat');
+			messagesRef.setDebug( true );
+			messagesRef.isReady().then( function(){
+console.log( "connected real-time!");
+/*
+				messagesRef.Disconnected({
+					"name": $('#nameInput').val() || "anonymous",
+					"text": "has left the building <(^_^)>"
 				});
+*/
 			});
-			$('#message').keypress(function (e) {
+//	grab all chat records so far...
+/*
+			userRef.where( {Name:'Lorenza Huels'} ).fields( {Name:1} ).on('value', function (data) {
+console.log( '---------' );
+				var message = data.value();
+				console.log( message );
+				userRef.transaction(function(currentData) {
+					if (currentData === null) {
+						return { Name: 'Wilma Flintstone' };
+					} else {
+						console.log('User wilma already exists.');
+						return; // Abort the transaction.
+					}
+				}, function(snapshot) {
+					console.log( "Wilma's data: ", snapshot.value() );
+				});
+console.log( '---------' );				
+			});
+*/
+			messagesRef.once('value', function (data) {
+console.log( "we found " + data.count() + " records");
+				data.forEach( function(message){
+					displayChatMessage(message.value() );
+/*
+					if( message._id == '54a8bd986de97doc1060617764'){
+						message.name = 'Roger 1234';
+						messagesRef.update(message._id,message);
+					}
+*/
+/*
+					if( message.value()._id == '549997e26e416doc1932997099'){
+						message.value().name = "Roger 1234";
+						message.update(function(resp) {
+							console.log( "Message updated" );
+						});
+					}
+*/
+				});
+			}, function(err) {
+				console.log(err); // Error: "It broke"
+			});
+						
+			// When the user presses enter on the message input, write the message to Data McFly.
+			$('#messageInput').keypress(function (e) {
 				if (e.keyCode == 13) {
-					var name = $('#name').val();
-					var text = $('#message').val();
-					Ref.set( {name:name, text:text} );
-					$('#message').val('');
+					var name = $('#nameInput').val() || "anonymous";
+					var text = $('#messageInput').val();
+					messagesRef.push( {name:name, text:text}, function(data){
+						console.log("pushed good");
+					});
+					$('#messageInput').val('');
 				}
 			});
-			Ref.on('added', function(data) {
+			
+			// Add a callback that is triggered for each chat message.
+			messagesRef.on('added', function (data) {
 				var message = data.value();
-				addChat(message.name, message.text);
+				displayChatMessage(message);
 			});
-		function addChat(name, text) {
-			$('<li/>').text(text).prepend($('<strong/>').text(name+': ')).appendTo($('#messagesDiv'));
-			$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-		}
-	</script>
-</body>
+
+function testme(){
+	console.log( 'ddd' );
+	testmep().then( function(c){
+		console.log( c, " messages from Roger" );	
+	});
+}
+function testmep(){
+	return messagesRef.where({"name": "Roger"}).once('value').then( function( stuff ){
+		console.log( stuff.count() + " messages from Roger" );
+		return stuff.count();
+	});
+}
+testme();
+
+			messagesRef.once('added').then(function (data) {
+				console.log( data.value() );
+			});
+
+
+			function displayChatMessage(message) {
+				$('<li/>')
+					.attr("id",message._id)
+					.text(message.text)
+					.prepend(
+						$("<strong class='example-chat-username' />").text(message.name+': ')
+					).appendTo($('#messagesDiv'));
+				$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+
+//				$('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+//				$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+			}
+
+			messagesRef.Connected( function( status ){
+				if( status === true ){
+					alert("connected");
+				} else {
+					alert("not connected");
+				}
+			});
+
+			messagesRef.onDisconnect( function(){
+				var name = $('#nameInput').val() || "anonymous";
+				var text = "has left the building!!!!!!!!!!!!";
+				messagesRef.push( {name:name, text:text} );
+			});
+
+			// Add a callback that is triggered for each chat message.
+			messagesRef.on('online', function (data) {
+				var online = data.value();				
+				$("#ocnt").text( online );
+			});
+		});
+		</script>
+	</body>
 </html>
-		
